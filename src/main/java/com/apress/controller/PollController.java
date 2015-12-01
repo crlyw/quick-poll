@@ -3,6 +3,7 @@ package com.apress.controller;
 import java.net.URI;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -31,7 +32,7 @@ public class PollController {
 	}
 
 	@RequestMapping(value = "/polls", method = RequestMethod.POST)
-	public ResponseEntity<?> createPoll(@RequestBody Poll poll) {
+	public ResponseEntity<?> createPoll(@Valid @RequestBody Poll poll) {
 
 		poll = pollRepoitory.save(poll);
 
@@ -53,7 +54,7 @@ public class PollController {
 
 	@RequestMapping(value = "/polls/{pollId}", method = RequestMethod.PUT)
 	public ResponseEntity<?> updatePoll(@RequestBody Poll poll, @PathVariable Long pollId) {
-		// Save the entityß
+		// Save the entity
 		verifyPoll(pollId);
 		pollRepoitory.save(poll);
 		return new ResponseEntity<>(HttpStatus.OK);
