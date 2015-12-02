@@ -18,20 +18,26 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.apress.domain.Poll;
 import com.apress.exception.ResourceNotFoundException;
 import com.apress.repository.PollRepository;
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
 
 @RestController
+@Api(value="polls", description = "Poll API")
 public class PollController {
 
 	@Inject
 	private PollRepository pollRepoitory;
 
 	@RequestMapping(value = "/polls", method = RequestMethod.GET)
+	@ApiOperation(value="Retrieves a Poll associated with the pollId", response=Poll.class)
 	public ResponseEntity<Iterable<Poll>> getAllPolls() {
 		Iterable<Poll> allPolls = pollRepoitory.findAll();
 		return new ResponseEntity<>(allPolls, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/polls", method = RequestMethod.POST)
+	@ApiOperation(value="Creates a new Poll", notes="The newly created poll Id will be sent in "
+			+ "the location response header", response = Void.class)
 	public ResponseEntity<?> createPoll(@Valid @RequestBody Poll poll) {
 
 		poll = pollRepoitory.save(poll);
@@ -46,6 +52,7 @@ public class PollController {
 	}
 
 	@RequestMapping(value = "/polls/{pollId}", method = RequestMethod.GET)
+	@ApiOperation(value="Retrieves a Poll associated with the pollId", response=Poll.class)
 	public ResponseEntity<?> getPoll(@PathVariable Long pollId) {
 		verifyPoll(pollId);
 		Poll p = pollRepoitory.findOne(pollId);
