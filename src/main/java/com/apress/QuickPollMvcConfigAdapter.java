@@ -10,7 +10,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 public class QuickPollMvcConfigAdapter extends WebMvcConfigurerAdapter{
 	
-	public void addArgumentsResolvers(List<HandlerMethodArgumentResolver> argumentResolvers){
+	@Override
+	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers){
 		PageableHandlerMethodArgumentResolver phmar 
 		  									= new PageableHandlerMethodArgumentResolver();
 		//Set the default size to 5
