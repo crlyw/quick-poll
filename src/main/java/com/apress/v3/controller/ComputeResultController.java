@@ -17,7 +17,7 @@ import com.apress.dto.OptionCount;
 import com.apress.dto.VoteResult;
 import com.apress.repository.VoteRepository;
 
-@RestController("computeResultControllerV2")
+@RestController("computeResultControllerV3")
 @RequestMapping("/v3/")
 public class ComputeResultController {
 

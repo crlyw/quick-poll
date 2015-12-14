@@ -15,7 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.apress.domain.Vote;
 import com.apress.repository.VoteRepository;
 
-@RestController("voteControllerV2")
+@RestController("voteControllerV3")
 @RequestMapping("/v3/")
 public class VoteController {
 

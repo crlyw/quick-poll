@@ -21,7 +21,7 @@ import com.apress.repository.PollRepository;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 
-@RestController("pollControllerV2")
+@RestController("pollControllerV3")
 @RequestMapping("/v3/")
 @Api(value="polls", description = "Poll API")
 public class PollController {
