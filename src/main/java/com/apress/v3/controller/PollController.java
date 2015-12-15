@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +23,7 @@ import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 
 @RestController("pollControllerV3")
-@RequestMapping("/v3/")
+@RequestMapping({"/v3/", "/oauth2/v3/"})
 @Api(value="polls", description = "Poll API")
 public class PollController {
 
@@ -69,6 +70,7 @@ public class PollController {
 	}
 
 	@RequestMapping(value = "/polls/{pollId}", method = RequestMethod.DELETE)
+	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	public ResponseEntity<?> deletePoll(@PathVariable Long pollId) {
 		verifyPoll(pollId);
 		pollRepoitory.delete(pollId);
