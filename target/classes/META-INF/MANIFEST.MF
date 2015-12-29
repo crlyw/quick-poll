@@ -4,6 +4,6 @@ Implementation-Title: quick-poll
 Implementation-Version: 0.0.1-SNAPSHOT
 Implementation-Vendor-Id: com.apress
 Build-Jdk: 1.7.0_80
-Built-By: u458873
+Built-By: U458873
 Created-By: Maven Integration for Eclipse
 
