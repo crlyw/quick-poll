@@ -35,4 +35,9 @@ public class Vote {
 		this.option = option;
 	}
 
+	@Override
+	public String toString() {
+		return "Vote [id=" + id + ", option=" + option + "]";
+	}
+
 }

@@ -56,4 +56,9 @@ public class Poll {
 		this.options = options;
 	}
 
+	@Override
+	public String toString() {
+		return "Poll [id=" + id + ", question=" + question + ", options=" + options + "]";
+	}
+
 }
